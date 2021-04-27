@@ -1,24 +1,40 @@
-const POP_UP = document.getElementById('popUp');
+const PopUp = document.getElementById("popUp");
 let preces = [];
 
-window.addEventListener('load', () => {
-    preces = JSON.parse(localStorage.getItem("preces") || "[]");
-    console.log(preces)
-    render();
+window.addEventListener("load", () => {
+  preces = JSON.parse(localStorage.getItem("preces") || "[]");
+  console.log(preces);
+  render();
 });
 
-document.getElementById('jaunaPrece').addEventListener('click', () => {
-    POP_UP.style.display = 'block';
+document.getElementById("jaunaPrece").addEventListener("click", () => {
+  PopUp.style.display = "flex";
+});
+document.getElementById("pievienotPreci").addEventListener("click", () => {
+  PopUp.style.display = "none";
 
-})
-document.getElementById('pievienotPreci').addEventListener('click', () => {
-    POP_UP.style.display = 'none';
+  let prece = { Prece: Prece.value, Daudzums: Daudzums.value };
 
-    let preces = {nosaukums: nosaukums.value};
+  Prece.value = "";
+  Daudzums.value = "";
 
-    nosaukums.value = "";
+  preces.push(prece);
 
-    preces.push(preces);
+  render();
+});
+function render() {
+  let saraksts = document.getElementById("saraksts");
+  saraksts.innerHTML = "";
 
-    render();
-})
+  for (let i = 0; i < preces.length; i++) {
+    let prece = `
+            <div class="prece">
+                <h3>Prece: ${preces[i].Prece}</h3> 
+                <h3>Daudzums: ${preces[i].Daudzums}</h3>
+            </div>`;
+
+    saraksts.innerHTML += prece;
+  }
+
+  localStorage.setItem("preces", JSON.stringify(preces));
+}
