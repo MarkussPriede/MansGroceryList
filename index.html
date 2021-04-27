@@ -9,21 +9,34 @@
   </head>
   <body>
     <h1>Iepirkumu saraksts</h1>
-
     <div id="poga">
       <button id="jaunaPrece">Jauna prece</button>
     </div>
     <div id="popUp">
       <form id="form">
         <h2 id="pievienotJaunu">Pievienot jaunu preci</h2>
-        <input type="text" id="nosaukums" placeholder="Nosaukums" />
-        <input type="text" id="daudzums" placeholder="Daudzums" />
-        <button type="submit" id="pievienotPreci">Pievienot</button>
+        <div class="inputLogs">
+          <input
+            type="text"
+            id="nosaukums"
+            maxlength="40"
+            class="inputLogs"
+            placeholder="Nosaukums"
+          />
+          <input
+            type="text"
+            class="inputLogs"
+            id="daudzums"
+            maxlength="3"
+            placeholder="Daudzums"
+          />
+          <button type="submit" class="inputLogs" id="pievienotPreci">
+            Pievienot
+          </button>
+        </div>
       </form>
     </div>
-
     <div id="saraksts"></div>
-
     <script src="js/script.js"></script>
   </body>
 </html>
